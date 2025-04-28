@@ -1,16 +1,11 @@
+package application;
 
 public class Member {
-    @SuppressWarnings("FieldMayBeFinal")
     private int id;
-    @SuppressWarnings("FieldMayBeFinal")
     private String firstName;
-    @SuppressWarnings("FieldMayBeFinal")
     private String lastName;
-    @SuppressWarnings({"FieldMayBeFinal", "unused"})
     private String birthDate;
-    @SuppressWarnings({"unused", "FieldMayBeFinal"})
     private String phoneNumber;
-    @SuppressWarnings("FieldMayBeFinal")
     private String email;
 
     public Member(int id, String firstName, String lastName, String birthDate, String phoneNumber, String email) {
@@ -22,7 +17,11 @@ public class Member {
         this.email = email;
     }
 
+    // Getters
     public int getId() { return id; }
-    public String getFullName() { return firstName + " " + lastName; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getBirthDate() { return birthDate; }
+    public String getPhoneNumber() { return phoneNumber; }
     public String getEmail() { return email; }
 }

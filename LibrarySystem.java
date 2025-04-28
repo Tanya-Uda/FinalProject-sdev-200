@@ -1,57 +1,83 @@
+package application;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LibrarySystem {
-    @SuppressWarnings("FieldMayBeFinal")
-    private List<Book> books = new ArrayList<>();
-    @SuppressWarnings("FieldMayBeFinal")
-    private List<Member> members = new ArrayList<>();
-    @SuppressWarnings("FieldMayBeFinal")
-    private List<Transaction> transactions = new ArrayList<>();
 
+    private List<Book> books;
+    private List<Member> members;
+    private List<Transaction> transactions;
+
+    public LibrarySystem() {
+        books = new ArrayList<>();
+        members = new ArrayList<>();
+        transactions = new ArrayList<>();
+    }
+
+    // Add a new book
     public void addBook(Book book) {
         books.add(book);
     }
 
+    // Add a new member
     public void addMember(Member member) {
         members.add(member);
     }
 
-    public boolean issueBook(int bookId, int memberId) {
-        for (Book book : books) {
-            if (book.getId() == bookId && book.getAvailableCopies() > 0) {
-                book.borrowBook();
-                transactions.add(new Transaction(transactions.size() + 1, bookId, memberId, java.time.LocalDate.now()));
-                return true; // Successfully issued
-            }
+    // Issue a book to a member
+    public void issueBook(int bookId, int memberId) {
+        Book book = findBookById(bookId);
+        Member member = findMemberById(memberId);
+        if (book != null && member != null && book.getAvailableCopies() > 0) {
+            // Create a new transaction
+            String issueDate = "2025-04-28";  // Example issue date
+            String dueDate = "2025-05-12";    // Example due date
+            Transaction transaction = new Transaction(transactions.size() + 1, bookId, memberId, issueDate, dueDate);
+            transactions.add(transaction);
+
+            // Update book available copies
+            book.setAvailableCopies(book.getAvailableCopies() - 1);
         }
-        return false; // Book not available
     }
 
-    public boolean returnBook(int transactionId) {
-        for (Transaction transaction : transactions) {
-            if (transactionId == transaction.getTransactionId() && transaction.getDueDate() == null) {
-                for (Book book : books) {
-                    if (book.getId() == transaction.getBookId()) {
-                        book.returnBook();
-                        transaction.returnBook(java.time.LocalDate.now());
-                        return true; // Successfully returned
-                    }
-                }
-            }
+    // Return a book
+    public void returnBook(int transactionId) {
+        Transaction transaction = findTransactionById(transactionId);
+        if (transaction != null) {
+            transaction.setReturnDate("2025-04-28");  // Example return date
+            Book book = findBookById(transaction.getBookId());
+            book.setAvailableCopies(book.getAvailableCopies() + 1);
         }
-        return false; // Invalid transaction
     }
 
-    public List<Book> getAllBooks() {
+    // Find a book by ID
+    public Book findBookById(int id) {
+        return books.stream().filter(book -> book.getId() == id).findFirst().orElse(null);
+    }
+
+    // Find a member by ID
+    public Member findMemberById(int id) {
+        return members.stream().filter(member -> member.getId() == id).findFirst().orElse(null);
+    }
+
+    // Find a transaction by ID
+    public Transaction findTransactionById(int id) {
+        return transactions.stream().filter(transaction -> transaction.getTransactionId() == id).findFirst().orElse(null);
+    }
+
+    // Get list of books
+    public List<Book> getBooks() {
         return books;
     }
 
-    public List<Member> getAllMembers() {
+    // Get list of members
+    public List<Member> getMembers() {
         return members;
     }
 
-    public List<Transaction> getAllTransactions() {
+    // Get list of transactions
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 }

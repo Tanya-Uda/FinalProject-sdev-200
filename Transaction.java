@@ -1,46 +1,42 @@
-import java.time.LocalDate;
+package application;
 
-
-@SuppressWarnings("unused")
 public class Transaction {
-    @SuppressWarnings({ "FieldMayBeFinal"})
     private int transactionId;
-    @SuppressWarnings({ "FieldMayBeFinal" })
     private int bookId;
-    @SuppressWarnings({ "FieldMayBeFinal" })
     private int memberId;
-    @SuppressWarnings({ "FieldMayBeFinal" })
-    private LocalDate issueDate;
-    @SuppressWarnings("FieldMayBeFinal")
-    private LocalDate dueDate;
-    private LocalDate returnDate;
+    private String issueDate;
+    private String dueDate;
+    private String returnDate;
     private boolean isOverdue;
-    private String status; // "Issued", "Returned"
+    private String status; // "Issued" or "Returned"
 
-    public Transaction(int transactionId, int bookId, int memberId, LocalDate issueDate) {
+    public Transaction(int transactionId, int bookId, int memberId, String issueDate, String dueDate) {
         this.transactionId = transactionId;
         this.bookId = bookId;
         this.memberId = memberId;
         this.issueDate = issueDate;
-        this.dueDate = issueDate.plusDays(14);
+        this.dueDate = dueDate;
         this.returnDate = null;
         this.isOverdue = false;
+        this.status = "Issued";
     }
 
-    public void returnBook(LocalDate returnDate) {
-        this.returnDate = returnDate;
-        this.isOverdue = returnDate.isAfter(dueDate);
-    }
-
+    // Getters and Setters
+    public int getTransactionId() { return transactionId; }
+    public int getBookId() { return bookId; }
+    public int getMemberId() { return memberId; }
+    public String getIssueDate() { return issueDate; }
+    public String getDueDate() { return dueDate; }
+    public String getReturnDate() { return returnDate; }
     public boolean isOverdue() { return isOverdue; }
-    public LocalDate getDueDate() { return dueDate; }
+    public String getStatus() { return status; }
 
-    public int getTransactionId() {
-        return transactionId;
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+        this.status = "Returned";
     }
 
-    int getBookId() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setOverdue(boolean overdue) {
+        isOverdue = overdue;
     }
-
 }

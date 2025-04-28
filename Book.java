@@ -1,18 +1,12 @@
+package application;
 
 public class Book {
-    @SuppressWarnings("FieldMayBeFinal")
     private int id;
-    @SuppressWarnings("FieldMayBeFinal")
     private String title;
-    @SuppressWarnings("FieldMayBeFinal")
     private String author;
-    @SuppressWarnings("FieldMayBeFinal")
     private String genre;
-    @SuppressWarnings("FieldMayBeFinal")
     private int totalCopies;
-    @SuppressWarnings("FieldMayBeFinal")
     private int availableCopies;
-    @SuppressWarnings({ "FieldMayBeFinal", "unused" })
     private String dateAdded;
 
     public Book(int id, String title, String author, String genre, int totalCopies, int availableCopies, String dateAdded) {
@@ -21,35 +15,20 @@ public class Book {
         this.author = author;
         this.genre = genre;
         this.totalCopies = totalCopies;
-        this.availableCopies = totalCopies;
+        this.availableCopies = availableCopies;
         this.dateAdded = dateAdded;
     }
 
-    // Getters and setters
+    // Getters and Setters
     public int getId() { return id; }
     public String getTitle() { return title; }
     public String getAuthor() { return author; }
     public String getGenre() { return genre; }
     public int getTotalCopies() { return totalCopies; }
     public int getAvailableCopies() { return availableCopies; }
-    public void borrowBook() { if (availableCopies > 0) availableCopies--; }
-    public void returnBook() { if (availableCopies < totalCopies) availableCopies++; }
+    public String getDateAdded() { return dateAdded; }
 
-    
-
-    public void issueCopy() {
-        if (availableCopies > 0) {
-            availableCopies--;
-        }
-    }
-
-    public void returnCopy() {
-        if (availableCopies < totalCopies) {
-            availableCopies++;
-        }
-    }
-
-    public boolean isAvailable() {
-        return availableCopies > 0;
+    public void setAvailableCopies(int availableCopies) {
+        this.availableCopies = availableCopies;
     }
 }
