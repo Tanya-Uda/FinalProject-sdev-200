@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.IssueReturnController">
+    <children>
+
+        <Label layoutX="20" layoutY="10" text="Issue / Return Book" style="-fx-font-size: 20;" />
+
+        <!-- member search -->
+        <Label layoutX="20" layoutY="50" text="Member ID or Name:" />
+        <TextField fx:id="memberField" layoutX="140" layoutY="45" />
+        <Button layoutX="300" layoutY="45" text="Find Member" onAction="#handleFindMember" />
+
+        <TextArea fx:id="memberArea" layoutX="20" layoutY="80" prefHeight="60" prefWidth="370" editable="false" wrapText="true" />
+
+        <!-- book search -->
+        <Label layoutX="20" layoutY="150" text="Book ID or Title:" />
+        <TextField fx:id="bookField" layoutX="140" layoutY="145" />
+        <Button layoutX="310" layoutY="145" text="Find Book" onAction="#handleFindBook" />
+
+        <TextArea fx:id="bookArea" layoutX="20" layoutY="180" prefHeight="60" prefWidth="370" editable="false" wrapText="true" />
+
+        <!-- buttons -->
+        <Button layoutX="120" layoutY="260" text="Issue Book" onAction="#handleIssueBook" />
+        <Button layoutX="220" layoutY="260" text="Return Book" onAction="#handleReturnBook" />
+        
+        <Button text="Back" layoutX="20" layoutY="260" onAction="#handleBack"/>
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.ManageMembersController" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
+    <content>
+        	<AnchorPane>
+            	<children>
+           
+                	<Label layoutX="20" layoutY="10" text="Manage Members" style="-fx-font-size: 20;" />
+
+                	<!-- Add Member -->
+                	<Label layoutX="20" layoutY="50" text="First Name:" />
+                	<TextField fx:id="firstNameField" layoutX="130" layoutY="45" />
+
+                	<Label layoutX="20" layoutY="90" text="Last Name:" />
+                	<TextField fx:id="lastNameField" layoutX="130" layoutY="85" />
+
+                	<Label layoutX="20" layoutY="125" text="Birth Date:" />
+        
+        <VBox layoutX="20" layoutY="140">
+            <children>
+                <Label text="(YYYY-MM-DD)" />
+            </children></VBox>
+                	<TextField fx:id="birthDateField" layoutX="130" layoutY="125" />
+
+                	<Label layoutX="20" layoutY="170" text="Phone:" />
+                	<TextField fx:id="phoneNumberField" layoutX="130" layoutY="165" />
+
+                	<Label layoutX="20" layoutY="210" text="Email:" />  
+                	<TextField fx:id="emailField" layoutX="130" layoutY="205" />
+
+                	<Button text="Add Member" layoutX="130" layoutY="250" onAction="#handleAddMember" />
+
+                	<Separator layoutY="300" prefWidth="500"/>
+
+                	<!-- Search Member -->
+                	<Label layoutX="20" layoutY="320" text="Search by ID or Name:" />
+                	<TextField fx:id="searchField" layoutX="150" layoutY="315" />
+                	<Button text="Search" layoutX="320" layoutY="315" onAction="#handleSearchMember" />
+
+                	<TextArea fx:id="memberInfoArea" layoutX="20" layoutY="360" prefWidth="350" prefHeight="120" editable="false" wrapText="true" />
+
+                	<Separator layoutY="500" prefWidth="500"/>
+
+                	<!-- Delete Member -->
+                	<Label layoutX="20" layoutY="520" text="Delete Member by ID:" />
+                	<TextField fx:id="deleteIdField" layoutX="150" layoutY="515" />
+                	<Button text="Delete" layoutX="320" layoutY="515" onAction="#handleDeleteMember" />
+
+                	<Button text="Back" layoutX="20" layoutY="250" onAction="#handleBack"/>
+                
+            	</children>
+        	</AnchorPane>
+    </content>
+</ScrollPane>

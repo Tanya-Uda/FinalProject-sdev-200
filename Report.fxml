@@ -1,0 +1,20 @@
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.ReportController">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Generate Report" style="-fx-font-size: 20;" />
+        
+        <TextField fx:id="inputId" layoutX="20" layoutY="55" promptText="Enter Book ID or Member ID"/>
+        <ComboBox fx:id="reportType" layoutX="175" layoutY="55" prefWidth="150"/>
+        <Button text="Generate" layoutX="330" layoutY="55" onAction="#handleReport"/>
+
+        <TextArea fx:id="reportArea" layoutX="20" layoutY="85" prefHeight="250" prefWidth="370"/>
+        
+        <Button text="Back" layoutX="20" layoutY="350" onAction="#handleBack"/>
+    </children>
+</AnchorPane>

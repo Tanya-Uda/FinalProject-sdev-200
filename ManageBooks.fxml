@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.ManageBooksController" prefWidth="450" prefHeight="380">
+    <children>
+        <Label layoutX="20" layoutY="10" text="Manage Books" style="-fx-font-size: 20;" />
+
+        <Label layoutX="20" layoutY="50" text="Title:" />
+        <TextField fx:id="titleField" layoutX="100" layoutY="45" />
+
+        <Label layoutX="20" layoutY="90" text="Author:" />
+        <TextField fx:id="authorField" layoutX="100" layoutY="85" />
+
+        <Label layoutX="20" layoutY="130" text="Genre:" />
+        <TextField fx:id="genreField" layoutX="100" layoutY="125" />
+
+        <Label layoutX="20" layoutY="170" text="Total Copies:" />
+        <TextField fx:id="copiesField" layoutX="100" layoutY="165" />
+
+        <Button text="Add Book" layoutX="100" layoutY="210" onAction="#handleAddBook" />
+
+        <Separator layoutY="260" prefWidth="400"/>
+
+        <Label layoutX="20" layoutY="280" text="Delete Book by ID:" />
+        <TextField fx:id="deleteIdField" layoutX="160" layoutY="275" />
+        <Button text="Delete Book" layoutX="100" layoutY="310" onAction="#handleDeleteBook" />
+        
+        <Button text="Back" layoutX="20" layoutY="210" onAction="#handleBack"/>
+    </children>
+</AnchorPane>
